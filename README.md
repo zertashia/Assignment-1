@@ -174,7 +174,25 @@ namespace studentProfile
             }
 
 
-                }
+        }
+
+
+        public static void viewAttendence()
+        {
+           
+                string[] words = File.ReadAllLines(@"C:\\Users\\zertashia shafiq\\Desktop\\vp a1.txt");
+            Console.WriteLine("\nID\tName\t\t\tAttendence");
+            for (int i = 0; i < words.Length; i ++)
+            {
+
+                Console.WriteLine("\n"+ words[i] + "\t" + words[i + 1] + "\t\t\t" + words[i + 6]);
+
+                i = i + 6;
+
+            }
+          
+
+        }
 
         static void Main(string[] args)
         {
@@ -206,6 +224,9 @@ namespace studentProfile
                     break;
                 case 5:
                     markAttendence();
+                    break;
+                case 6:
+                    viewAttendence();
                     break;
 
 
