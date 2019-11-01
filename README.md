@@ -32,7 +32,7 @@ namespace studentProfile
                     sp.cgpa = Convert.ToDouble(Console.ReadLine());
                     Console.WriteLine("\nEnter student University: ");
                     sp.university = Console.ReadLine();
-                    Console.ReadKey();
+                  
                     Console.WriteLine("\nEnter student Department: ");
                     sp.department = Console.ReadLine();
                     Console.WriteLine();
@@ -163,11 +163,11 @@ namespace studentProfile
                 for(int i=0; i<words.Length; i=i+7)
                 {
                     sw.WriteLine(words[i]);
-                    sw.WriteLine(words[i+1]);
-                    sw.WriteLine(words[i+2]);
-                    sw.WriteLine(words[i+3]);
-                    sw.WriteLine(words[i+4]);
-                    sw.WriteLine(words[i+5]);
+                    sw.WriteLine(words[i + 1]);
+                    sw.WriteLine(words[i + 2]);
+                    sw.WriteLine(words[i + 3]);
+                    sw.WriteLine(words[i + 4]);
+                    sw.WriteLine(words[i + 5]);
                     sw.WriteLine(attend[j]);
                     j = j + 7;
                 }
@@ -190,8 +190,30 @@ namespace studentProfile
                 i = i + 6;
 
             }
-          
+        }
+        public static void high()
+        {
+            double temp = 0;
+            double sec = 0;
+            string[] words = File.ReadAllLines(@"C:\\Users\\zertashia shafiq\\Desktop\\vp a1.txt");
+            double[] gp = new double[words.Length];
+            for (int i = 0; i < words.Length; i = i + 7)
+            {
+                gp[i] = Convert.ToDouble(words[i + 3]);
+                //Console.WriteLine(gp[i]);
+            }
+            var hi = gp.Max();
 
+            //Console.WriteLine(+hi);
+            Console.WriteLine("Student with highest CGPA\n");
+            Console.WriteLine("ID\tName\t\tCGPA");
+            for (int i = 0; i < words.Length; i = i + 7)
+            {
+                if(Convert.ToDouble(words[i+3])==hi)
+                {
+                    Console.WriteLine(words[i] + "\t" + words[i + 1] + "\t" + words[i + 3]);
+                }
+            }
         }
 
         static void Main(string[] args)
@@ -221,6 +243,7 @@ namespace studentProfile
                     deleteRecord();
                     break;
                 case 4:
+                    high();
                     break;
                 case 5:
                     markAttendence();
