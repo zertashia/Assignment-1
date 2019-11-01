@@ -44,7 +44,7 @@ namespace studentProfile
                     sw.WriteLine(sp.university);
                     sw.WriteLine(sp.department);
                     sw.WriteLine();
-                    sw.Close();
+                   
                 }
             }
         }
@@ -111,13 +111,31 @@ namespace studentProfile
         }
 
 
+        public static void deleteRecord()
+        {
+            List<string> line = File.ReadAllLines(@"C:\\Users\\zertashia shafiq\\Desktop\\vp a1.txt").ToList();
+            Console.WriteLine("Enter ID: ");
+            string id = Console.ReadLine();
+            for (int i=0;i<line.Count;i++)
+            {
+                if(line[i]==id)
+                {
+                    line.RemoveAt(0);
+                   for(int j=0;j<6;j++)
 
+                    {
+                        line.RemoveAt(0);
+                    }
+                }
+            }
+            File.WriteAllLines(@"C:\\Users\\zertashia shafiq\\Desktop\\vp a1.txt", line.ToArray());
+        }
 
 
         static void Main(string[] args)
         {
             Program obj = new Program();
-            Console.Write("\n1. Create Student Profile\n2 Search student\n3.Delete Student Record\n4.Delete Student Record\n5.Mark student attendence\n6View Attendence\n");
+            Console.Write("\n1.Create Student Profile\n2 Search student\n3.Delete Student Record\n4.List top 3 of class\n5.Mark student attendence\n6.View Attendence\n");
             int choice = Convert.ToInt32(Console.ReadLine());
             switch (choice)
             {
@@ -137,6 +155,9 @@ namespace studentProfile
                     }
 
                     break;
+                case 3:
+                    deleteRecord();
+                    break; 
 
 
             }
