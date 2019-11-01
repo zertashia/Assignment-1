@@ -14,7 +14,6 @@ namespace Student
             int num = Convert.ToInt32(Console.ReadLine());
             using (StreamWriter sw = new StreamWriter(@"C:\\Users\\zertashia shafiq\\Desktop\\vp a1.txt"))
             {
-
                 for (int i = 0; i < num; i++)
                 {
                     Console.WriteLine("\nEnter student ID: ");
@@ -32,7 +31,6 @@ namespace Student
                     Console.WriteLine("\nEnter student Department: ");
                     sp.department = Console.ReadLine();
                     Console.WriteLine();
-
                     sw.WriteLine(sp.id);
                     sw.WriteLine(sp.name);
                     sw.WriteLine(sp.semester);
@@ -40,19 +38,13 @@ namespace Student
                     sw.WriteLine(sp.university);
                     sw.WriteLine(sp.department);
                     sw.WriteLine();
-
                 }
             }
-
-         
         }
         static void Main(string[] args)
         {
             Program obj = new Program();
-            enterStudentInfo(obj);
-            
+            enterStudentInfo(obj);            
         }
-    }
-   
-    
+    }   
 }
