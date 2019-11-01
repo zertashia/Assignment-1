@@ -125,12 +125,56 @@ namespace studentProfile
 
                     {
                         line.RemoveAt(0);
+
+                       
                     }
                 }
             }
             File.WriteAllLines(@"C:\\Users\\zertashia shafiq\\Desktop\\vp a1.txt", line.ToArray());
         }
 
+        public static void markAttendence()
+        {
+
+            string[] words = File.ReadAllLines(@"C:\\Users\\zertashia shafiq\\Desktop\\vp a1.txt");
+            string[] attend = new string[words.Length];
+            string[] id = new string[words.Length];
+            Console.WriteLine("press 'a' to mark absent\tpress 'p' to mark present against each ID\n\n");
+            string mark;
+            for(int i = 0;i < words.Length;i=i+7)
+            {
+                id[i] = words[i];
+                Console.Write("Student ID: "+id[i]+"\t\ta/p: ");
+                mark = Console.ReadLine();
+                if(mark=="p")
+                {
+                    attend[i] = "present";
+                }
+                else if(mark=="a")
+                {
+                    attend[i] = "absent";
+                }
+
+            }
+            int j = 0;
+           
+            using(StreamWriter sw=new StreamWriter(@"C:\\Users\\zertashia shafiq\\Desktop\\vp a1.txt"))
+            {
+                for(int i=0; i<words.Length; i=i+7)
+                {
+                    sw.WriteLine(words[i]);
+                    sw.WriteLine(words[i+1]);
+                    sw.WriteLine(words[i+2]);
+                    sw.WriteLine(words[i+3]);
+                    sw.WriteLine(words[i+4]);
+                    sw.WriteLine(words[i+5]);
+                    sw.WriteLine(attend[j]);
+                    j = j + 7;
+                }
+            }
+
+
+                }
 
         static void Main(string[] args)
         {
@@ -157,7 +201,12 @@ namespace studentProfile
                     break;
                 case 3:
                     deleteRecord();
-                    break; 
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    markAttendence();
+                    break;
 
 
             }
